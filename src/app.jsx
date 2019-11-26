@@ -5,27 +5,14 @@ import dva from './utils/dva'
 import models from './models'
 
 import Home from './pages/home/index'
-import './app.scss'
 
 const dvaApp = dva.createApp({
-  initialState: {},
+  initState: {},
   models: models
 })
 const store = dvaApp.getStore()
 
 class App extends Component {
-
-  config = {
-    pages: [
-      'pages/home/index'
-    ],
-    window: {
-      backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black'
-    }
-  }
 
   componentDidMount () {}
 
@@ -35,7 +22,53 @@ class App extends Component {
 
   componentDidCatchError () {}
 
-  
+  config = {
+    pages: [
+      'pages/home/index',
+      'pages/note/index',
+      'pages/user/index',
+      'pages/message/index',
+      // 'pages/login/index',
+    ],
+    window: {
+      backgroundTextStyle: 'dark',
+      navigationBarBackgroundColor: '#fff',
+      navigationBarTitleText: 'CoolPlayer',
+      navigationBarTextStyle: 'black',
+    },
+    tabBar: {
+      list: [
+        {
+          pagePath: 'pages/home/index',
+          text: '首页',
+          iconPath: './assets/images/tabbar/home.png',
+          selectedIconPath: './assets/images/tabbar/home-active.png',
+        },
+        {
+          pagePath: 'pages/note/index',
+          text: '笔记',
+          iconPath: './assets/images/tabbar/note.png',
+          selectedIconPath: './assets/images/tabbar/note-active.png',
+        },
+        {
+          pagePath: 'pages/message/index',
+          text: '消息',
+          iconPath: './assets/images/tabbar/message.png',
+          selectedIconPath: './assets/images/tabbar/message-active.png',
+        },
+        {
+          pagePath: 'pages/user/index',
+          text: '我的',
+          iconPath: './assets/images/tabbar/user.png',
+          selectedIconPath: './assets/images/tabbar/user-active.png',
+        },
+      ],
+      color: '#333',
+      selectedColor: '#333',
+      backgroundColor: '#fff',
+      borderStyle: 'white',
+    },
+  }
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数

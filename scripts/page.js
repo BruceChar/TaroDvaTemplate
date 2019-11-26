@@ -26,12 +26,13 @@ import './${dirName}.scss'
     ...${dirName},
 }))
 class ${capPirName} extends Component {
-  config:Config = {
-      navigationBarTitleText: '${dirName}'
-  }
-
+  
   componentDidMount() {}
 
+  config:Config = {
+    navigationBarTitleText: '${dirName}'
+  }
+  
   render() {
       return (
       <View className='fx-${dirName}-wrap'>

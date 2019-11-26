@@ -8,7 +8,7 @@ const dirName = process.argv[2];
 
 if (!dirName) {
   console.log('文件夹名称不能为空！');
-  console.log('示例：npm run tep test');
+  console.log('示例：npm run cmp test');
   process.exit(0);
 }
 
@@ -43,7 +43,9 @@ export default class ${Dir}Cmp extends Component {
 `
 
 // scss文件模版
-const scssTep = `@import "../../styles/mixin"
+const scssTep = 
+`
+@import "../../styles/mixin;"
 
 .${dirName}-cmp {
   @include wh(100%, 100%)
