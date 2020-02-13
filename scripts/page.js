@@ -17,7 +17,7 @@ if (!dirName) {
 // 页面模板构建
 const indexTep =
 `
-import Taro, { Component, Config } from '@tarojs/taro'
+import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 import './${dirName}.scss'
@@ -29,16 +29,18 @@ class ${capPirName} extends Component {
   
   componentDidMount() {}
 
-  config:Config = {
+  config = {
     navigationBarTitleText: '${dirName}'
   }
   
   render() {
-      return (
-      <View className='fx-${dirName}-wrap'>
-          页面内容
-      </View>
-      )
+    return (
+    <View className='container'>
+    <View className='${dirName}'>
+      
+    </View>
+    </View>
+    )
   }
 }
 export default ${capPirName}
@@ -61,28 +63,40 @@ const scssTep = ``
 // 接口请求模板
 const serviceTep =
 `
-import Api from '../../utils/request'
+import req from '../../utils/request'
 `
 
 // model 模板
 const modelTep = 
 `
-import * as ${dirName}Api from './service';
+import * as ${dirName}Api from './service'
+
 export default {
     namespace: '${dirName}',
     state: {
+      
     },
     
-    effects: {},
-    
-    reducers: {}
+    effects: {
+      *demo({param}, {call, put, select}) {
+
+      }
+    },
+    /*
+      NOTE: function name cannot be same with those defined in effects.
+    */
+    reducers: {
+      save(state, {newstate}) {
+        return {...state, ...newstate}
+      }
+    },
 }
 `
 
 fs.mkdirSync(`./src/pages/${dirName}`); // mkdir $1
 process.chdir(`./src/pages/${dirName}`); // cd $1
-fs.writeFileSync(`index.tsx`, indexTep); //jsx
+fs.writeFileSync(`index.jsx`, indexTep); //jsx
 fs.writeFileSync(`${dirName}.scss`, scssTep); // scss
-fs.writeFileSync('service.ts', serviceTep); // service
-fs.writeFileSync('model.ts', modelTep); // model
+fs.writeFileSync('service.js', serviceTep); // service
+fs.writeFileSync('model.js', modelTep); // model
 process.exit(0);

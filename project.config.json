@@ -1,8 +1,8 @@
 {
 	"miniprogramRoot": "dist/",
-	"projectname": "play",
-	"description": "good play, play good",
-	"appid": "wxcd4c0d268cc3a06e",
+	"projectname": "color fart",
+	"description": "求夸",
+	"appid": "wx8217fce9c104a6bf",
 	"setting": {
 		"urlCheck": false,
 		"es6": false,

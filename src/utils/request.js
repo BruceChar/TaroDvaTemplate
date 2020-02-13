@@ -1,64 +1,38 @@
-import Taro from '@tarojs/taro'
-import {baseUrl} from '../config'
+import api from './http'
+import { isLogin, getToken } from './util'
 
-const HEADURL = {'Content-Type': 'application/x-www-form-urlencoded'}
-const HEADJSON = {'Content-Type': 'application/json'}
-
-const http = ({url = '', param = {}, isJson = true, ...method }) => {
-  let head = HEADJSON
-  if (!isJson) {
-    head = HEADURL
+let http = ({url, param, login=true, isJson=true, ...method}) => {
+  //need login 
+  // console.log('-------login--isLogin-----', url, login, isLogin())
+  let hasLogin = isLogin()
+  if (login && !hasLogin) {
+    return {stat: 1, msg: '需要登录才能操作', data: {}}
   }
-  return Taro.request({
-    url: baseUrl + url,
-    data: param,
-    header: head,
-    ...method,  //method bind
-  }).then(res => {
-    const { statusCode, data } = res
-    if (statusCode >= 200 && statusCode < 300) {
-      return data
-    } else {
-      throw new Error(`网络请求错误，状态码${statusCode}`)
-    }
-  })
+  let token = 'Guest'
+  if (hasLogin) token = getToken()
+  return api({url, param, token, isJson, ...method})
 }
 
-const get = ({url = '', param = {}, isJson = true}) => {
+const get = ({url = '', param = {}, login}) => {
   return http({
     url,
     param,
-    isJson,
+    login,
     method: 'GET'
   })
 }
 
-const post = ({url = '', param = {}, isJson = true}) => {
+const post = ({url = '', param = {}, login}) => {
+  // let token = Taro.getStorageSync('token')
   return http({
     url,
     param,
-    isJson,
+    login,
     method: 'POST'
   })
 }
 
-const put = ({url = '', param = {}, isJson = true}) => {
-  return http({
-    url,
-    param,
-    isJson,
-    method: 'PUT'
-  })
-}
-
-/**
- * 对外接口get/post/put/delete
- * @url 请求的url，非空
- * @param 请求数据参数，对象类型，可空
- * @return Promise对象
- */
 module.exports = {
   get,
   post,
-  put
-} 
+}

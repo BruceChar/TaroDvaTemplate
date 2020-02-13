@@ -33,9 +33,11 @@ export default class ${Dir}Cmp extends Component {
   }
 
   render() {
+    const {  } = this.props
+    
     return (
-      <View className="${dirName}-cmp">
-        ${dirName}
+      <View className='${dirName}'>
+        
       </View>
     )
   }
@@ -43,12 +45,12 @@ export default class ${Dir}Cmp extends Component {
 `
 
 // scss文件模版
+// @import "../../styles/mixin";
 const scssTep = 
 `
-@import "../../styles/mixin;"
 
-.${dirName}-cmp {
-  @include wh(100%, 100%)
+.${dirName} {
+  
 }
 `
 

@@ -23,4 +23,5 @@ const data = {
   })
 }
 
+//请求1000ms后返回
 module.exports = delay(data, 1000)

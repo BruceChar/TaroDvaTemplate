@@ -25,49 +25,37 @@ class App extends Component {
   config = {
     pages: [
       'pages/home/index',
-      'pages/note/index',
-      'pages/user/index',
-      'pages/message/index',
-      // 'pages/login/index',
     ],
     window: {
       backgroundTextStyle: 'dark',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'CoolPlayer',
       navigationBarTextStyle: 'black',
+      // navigationStyle: 'custom',    //自定义导航栏
     },
-    tabBar: {
-      list: [
-        {
-          pagePath: 'pages/home/index',
-          text: '首页',
-          iconPath: './assets/images/tabbar/home.png',
-          selectedIconPath: './assets/images/tabbar/home-active.png',
-        },
-        {
-          pagePath: 'pages/note/index',
-          text: '笔记',
-          iconPath: './assets/images/tabbar/note.png',
-          selectedIconPath: './assets/images/tabbar/note-active.png',
-        },
-        {
-          pagePath: 'pages/message/index',
-          text: '消息',
-          iconPath: './assets/images/tabbar/message.png',
-          selectedIconPath: './assets/images/tabbar/message-active.png',
-        },
-        {
-          pagePath: 'pages/user/index',
-          text: '我的',
-          iconPath: './assets/images/tabbar/user.png',
-          selectedIconPath: './assets/images/tabbar/user-active.png',
-        },
-      ],
-      color: '#333',
-      selectedColor: '#333',
-      backgroundColor: '#fff',
-      borderStyle: 'white',
-    },
+
+    ///如果自定义tabbar，则注释掉tabBar字段
+
+    // tabBar: {
+    //   list: [
+    //     {
+    //       pagePath: 'pages/home/index',
+    //       text: '首页',
+    //       iconPath: './assets/images/tabbar/home.png',
+    //       selectedIconPath: './assets/images/tabbar/home-active.png',
+    //     },
+    //     {
+    //       pagePath: 'pages/user/index',
+    //       text: '我的',
+    //       iconPath: './assets/images/tabbar/user.png',
+    //       selectedIconPath: './assets/images/tabbar/user-active.png',
+    //     },
+    //   ],
+    //   color: '#333',
+    //   selectedColor: '#333',
+    //   backgroundColor: '#fff',
+    //   borderStyle: 'white',
+    // },
   }
 
   // 在 App 类中的 render() 函数没有实际作用
